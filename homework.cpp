@@ -1,4 +1,4 @@
-//Aaron Garber
+//Aaron Garber, George Tsaava CS12
 #include<iostream>
 #include<fstream>
 using namespace std;
