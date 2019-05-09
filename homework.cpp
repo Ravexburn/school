@@ -33,7 +33,7 @@ int main(){
 	if (choice == 1){
 		myfile.open("tally.txt");
 		while(myfile >> total){
-			cout << total;
+			cout << total << "\n";
 		}
 		myfile.close();
 	}else if(choice == 2){
@@ -45,13 +45,13 @@ int main(){
 	}else if(choice == 3){
 		myfile.open("voted.txt");
 		while(myfile >> voterID){
-			cout << voterID << " has voted for choice #" << choice << "\n";
+			cout << voterID << "\n";
 		}
 		myfile.close();
 	}else if(choice == 4){
 		myfile.open("paper.txt");
 		while(myfile >> voterID){
-			cout << voterID;
+		cout << voterID << " has voted for choice #" << "\n";
 		}
 		myfile.close();
 	}else if(choice == 5){
@@ -102,7 +102,7 @@ void voted(int voterID, int choice, int total){
 		myfile << voterID << " has voted for choice #" << choice << "\n";
 		myfile.close();
 		myfile.open("tally.txt", ios::trunc);
-		myfile << total;
+		myfile << total << "total votes\n";
 		myfile.close();
 		cout << "Thank you " << voterID << " for voting!\n";
 }
