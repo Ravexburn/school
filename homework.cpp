@@ -3,11 +3,12 @@
 #include<fstream>
 using namespace std;
 
+bool validId(fstream, int);
 void voted(int, int, int);
 
 int main(){
 	
-	int voterID, choice = 0, adminID = 5013, total = 0;
+	int voterID, choice = 0, adminID = 5013, total = 0, vID;
 	
 	fstream myfile;
 	
@@ -15,17 +16,9 @@ int main(){
 	
 	cout << "Welcome to the 2019 Elections! Please enter your voter ID to continue.\n";
 	cin >> voterID;
-	myfile.open("voterID.txt");	
-	while(myfile >> voterID){
-	if(voterID == voterID){
-		cout << "Valid ID found!\n";
-	}else{
-		cout << "Could not find valid ID.\n";
-	}
-	}
-	myfile.close();
-	
-	
+	while(false){	
+	bool validId(voterID);
+}
 	if(voterID == adminID){
 		while(choice != 5){
 		cout << "Welcome Admin! What would you like to do? \n";
@@ -52,13 +45,13 @@ int main(){
 	}else if(choice == 3){
 		myfile.open("voted.txt");
 		while(myfile >> voterID){
-			cout << voterID << "\n";
+			cout << voterID << " has voted for choice #" << choice << "\n";
 		}
 		myfile.close();
 	}else if(choice == 4){
 		myfile.open("paper.txt");
 		while(myfile >> voterID){
-			cout << voterID << " has voted for choice #" << choice << '\n';
+			cout << voterID;
 		}
 		myfile.close();
 	}else if(choice == 5){
@@ -75,29 +68,40 @@ int main(){
 	cin >> choice;	
 
 	if (choice == 1 && voterID != adminID){
-		voted(voterID, choice, total);
+		voted(voterID, choice, total++);
 	}else if(choice == 2 && voterID != adminID){
-		voted(voterID, choice, total);
+		voted(voterID, choice, total++);
 	}else if(choice == 3 && voterID != adminID){
-		voted(voterID, choice, total);
+		voted(voterID, choice, total++);
 	}else if(choice == 4 && voterID != adminID){
-		cout << "Have a nice day!";
+		cout << "Have a nice day!\n";
 	}
 }
 }
 return 0;
 }
 
+bool validID(fstream myfile, int voterID){
+	int vId;
+	while (myfile >> vId){
+		if(voterID == vId){
+			cout << "Valid ID found! \n";
+			return true;
+		}
+	}
+	cout << "Could not find valid ID. \n";
+	return false;
+}
+
 void voted(int voterID, int choice, int total){
 		fstream myfile;
-		total = total + 1;
 		myfile.open("voted.txt", ios::app);
 		myfile << voterID << "\n";
 		myfile.close();
 		myfile.open("paper.txt", ios::app);
 		myfile << voterID << " has voted for choice #" << choice << "\n";
 		myfile.close();
-		myfile.open("tally.txt", ios::out);
+		myfile.open("tally.txt", ios::trunc);
 		myfile << total;
 		myfile.close();
 		cout << "Thank you " << voterID << " for voting!\n";
