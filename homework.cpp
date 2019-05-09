@@ -101,7 +101,7 @@ void voted(int voterID, int choice, int total){
 		myfile.open("paper.txt", ios::app);
 		myfile << voterID << " has voted for choice #" << choice << "\n";
 		myfile.close();
-		myfile.open("tally.txt", ios::trunc);
+		myfile.open("tally.txt");
 		myfile << total << "total votes\n";
 		myfile.close();
 		cout << "Thank you " << voterID << " for voting!\n";
