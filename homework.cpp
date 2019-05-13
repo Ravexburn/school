@@ -22,9 +22,11 @@ int main(){
 	cout << "Welcome to the 2019 Elections! Please enter your voter ID to continue.\n";
 	cin >> voterID;
 	//Checks if it is a valid voter ID.
+	if(voterID != adminID){
 	myfile.open("voterID.txt");
 	if (!validId(&myfile, voterID)) return 0;
 	myfile.close();
+}
 	//Asks admin for his choices.
 	if(voterID == adminID){
 		while(choice != 5){
