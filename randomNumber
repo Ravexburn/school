@@ -1,0 +1,14 @@
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+int main(){
+
+//Gets a random number 0-99 
+
+int randomNum = rand() % 100;
+
+cout << randomNum;
+	
+}
